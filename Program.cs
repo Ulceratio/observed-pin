@@ -11,42 +11,16 @@ namespace ConsoleApp2
 {
     class Program
     {
-        //class A
-        //{
-        //    public virtual void Method()
-        //    {
-        //        Console.WriteLine("MethodA");
-        //    }
-        //}
-        //class B : A
-        //{
-        //    public override void Method()
-        //    {
-        //        Console.WriteLine("MethodB");
-        //    }
-        //}
-        //class C : B
-        //{
-        //    public new void Method()
-        //    {
-        //        Console.WriteLine("MethodC");
-        //    }
-        //}
-
+      
 
         static void Main(string[] args)
         {
 
-            //BruteForce bruteForce = new BruteForce();
-            //bruteForce.Start("19");
-            //bruteForce.Start("369");
 
             Trie trie = new Trie();
 
             string observed = "369";
             
-
-
             Stopwatch watch = Stopwatch.StartNew();
 
             watch.Stop();
@@ -76,190 +50,6 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
 
-        public static List<string> GetPINs(string observed)
-        {
-            return null;
-        }
-
-        //class BruteForce
-        //{
-        //    #region Dop 
-        //    private class Symbol : ICloneable
-        //    {
-        //        #region Fields
-
-        //        public List<Symbol> PossibleReplacements { get => _possibleReplacements;
-        //            private set
-        //            {
-        //                _possibleReplacements = value;
-        //                foreach (var item in _possibleReplacements)
-        //                {
-        //                    item.PreviousSymbol = PreviousSymbol;
-        //                }
-        //            }
-        //        }
-
-        //        public char IntraSymbol { get; set; }
-        //        public char ForTrySymbol { get; set; }
-
-        //        private Symbol _nextSymbol;
-        //        public Symbol NextSymbol
-        //        {
-        //            get => _nextSymbol;
-        //            set
-        //            {
-        //                _nextSymbol = value;
-        //                PossibleReplacements = (from el in GetReplacements(_nextSymbol.IntraSymbol) orderby el where el != 'z' select new Symbol(el)).ToList();
-        //            }
-        //        }
-
-        //        public Symbol PreviousSymbol;
-        //        private List<Symbol> _possibleReplacements;
-
-        //        #endregion
-
-        //        public Symbol(char IntraSymbol)
-        //        {
-        //            this.IntraSymbol = IntraSymbol;
-        //            //PossibleReplacements = (from el in GetReplacements() orderby el where el != 'z' select new Symbol(el)).ToList();
-        //        }
-
-        //        public Symbol()
-        //        {
-        //            IntraSymbol = 'z';
-        //        }
-
-        //        #region Methods
-
-        //        public void AddToChain(Symbol symbol)
-        //        {
-        //            if (PossibleReplacements == null)
-        //            {
-        //                PossibleReplacements = (from el in GetReplacements(symbol.IntraSymbol) orderby el where el != 'z' select new Symbol(el)).ToList();
-        //            }
-        //            else
-        //            {
-        //                foreach (var item in PossibleReplacements)
-        //                {
-        //                    if (item.NextSymbol != null)
-        //                    {
-        //                        item.AddToChain(symbol);
-        //                    }
-        //                    else
-        //                    {
-        //                        item.PreviousSymbol = this;
-        //                        item.NextSymbol = symbol;
-        //                        item.ToString();
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        private IEnumerable<char> GetReplacements(char InputSymbol)
-        //        {
-        //            var tempForECLock = ECLock();
-
-        //            bool exit = false;
-
-        //            for (int i = 0; i < 4 && exit == false; i++)
-        //            {
-        //                for (int j = 0; j < 3 && exit == false; j++)
-        //                {
-        //                    if (tempForECLock[i, j] == InputSymbol)
-        //                    {
-        //                        for (int k = -1; k <= 1; k += 2)
-        //                        {
-        //                            if (i + k >= 0 && i + k < 4)
-        //                            {
-        //                                yield return tempForECLock[i + k, j];
-        //                            }
-        //                            if (j + k >= 0 && j + k < 3)
-        //                            {
-        //                                yield return tempForECLock[i, j + k];
-        //                            }
-        //                        }
-        //                        yield return InputSymbol;
-        //                        exit = true;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        public override string ToString()
-        //        {
-        //            string result = "";
-        //            Symbol symbol = this;
-        //            if (NextSymbol == null)
-        //            {
-        //                while (symbol.PreviousSymbol != null)
-        //                {
-        //                    result += symbol.IntraSymbol;
-        //                    symbol = symbol.PreviousSymbol;
-        //                }
-        //                result += symbol.IntraSymbol;
-        //                return new string(result.Reverse().ToArray());
-        //            }
-        //            else
-        //            {
-        //                return IntraSymbol.ToString();
-        //            }
-        //        }
-
-        //        public IEnumerable<string> Print()
-        //        {
-        //            if(NextSymbol != null || PreviousSymbol == null)
-        //            {
-        //                foreach (var item in PossibleReplacements)
-        //                {
-        //                    item.Print().ToList();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                yield return ToString();
-        //            }
-        //        }
-
-        //        public object Clone()
-        //        {
-        //            return new Symbol() { IntraSymbol = IntraSymbol };
-        //        }
-
-        //        #endregion
-        //    }
-        //    #endregion
-
-        //    #region Fields
-
-        //    private List<Symbol> symbols = new List<Symbol>();
-
-        //    private string Observed;
-
-        //    #endregion
-
-        //    public BruteForce()
-        //    {
-        //    }
-
-        //    public BruteForce(string Observed)
-        //    {
-        //        this.Observed = Observed;
-        //    }
-
-        //    public void Start(string observed)
-        //    {
-        //        Queue<Symbol> symbols = new Queue<Symbol>();
-        //        var GivenSymbols =(from el in observed.ToCharArray().AsParallel() select new Symbol(el)).ToList();
-        //        var root = new Symbol();
-        //        foreach (var item in GivenSymbols)
-        //        {
-        //            root.AddToChain(item);
-        //        }
-
-        //        var res = root.Print().ToList();
-        //    }
-
-        //}
 
         class TrieElement
         {
