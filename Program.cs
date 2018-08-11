@@ -108,13 +108,6 @@ namespace ConsoleApp2
                 }
                 else
                 {
-                    string resultStr = "";
-                    TrieElement trieElement = this;
-                    while (trieElement.ParentTrie != null)
-                    {
-                        resultStr += trieElement.Symbol;
-                        trieElement = trieElement.ParentTrie;
-                    }
                     yield return ToString();
                 }
             }
